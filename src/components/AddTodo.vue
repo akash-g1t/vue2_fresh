@@ -2,7 +2,7 @@
      <div>
 
          <form @submit="addTodo">
-             <input type='text' v-model="title" name='title' placeholder='Add Todo...'>
+             <input type='text' v-model='title' name='title' placeholder='Add Todo...'>
              <input type="submit" value="Submit" class="btn">
          </form>
 
@@ -21,12 +21,14 @@ export default {
     },
     methods: {
         addTodo() {
+            console.log('Went to addTodo!')
             const newTodo = {
                 id: 9,
                 title: this.title,
                 completed: false
             }
             // Send up to parent
+            console.log(newTodo)
             this.$emit('add-todo', newTodo);
         }
     }
