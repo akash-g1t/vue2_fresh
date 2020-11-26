@@ -10,7 +10,7 @@
 </template>
 
 <script>
-// import uuid from 'uuid';
+import { uuid } from 'vue-uuid';
 
 export default {
     name: 'AddTodo',
@@ -20,16 +20,19 @@ export default {
         }
     },
     methods: {
-        addTodo() {
+        addTodo(e) {
+            e.preventDefault();
             console.log('Went to addTodo!')
             const newTodo = {
-                id: 9,
+                id: uuid.v4(),
                 title: this.title,
                 completed: false
             }
             // Send up to parent
             console.log(newTodo)
             this.$emit('add-todo', newTodo);
+
+            this.title = ''
         }
     }
 }
@@ -51,3 +54,22 @@ export default {
     }
 
 </style>
+
+
+// For preventing the form submit default behaviour,
+
+// Either use "@submit.prevent" in <form> tag i.e.
+// <form @submit.prevent="addTodo">
+
+// OR
+
+// use an "event" listener in the methods and add event.preventDefault(), i.e.
+
+// methods: {
+//     addTodo(e) {
+//         e.preventDefault();
+//         const newTodo = {
+//             ...
+//         }
+//     }
+// }
