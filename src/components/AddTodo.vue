@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { uuid } from 'vue-uuid';
 
 export default {
     name: 'AddTodo',
@@ -24,7 +23,6 @@ export default {
             e.preventDefault();
             console.log('Went to addTodo!')
             const newTodo = {
-                id: uuid.v4(),
                 title: this.title,
                 completed: false
             }
